@@ -131,6 +131,17 @@ section { padding:96px 5%; }
 #pricing { background:var(--light); }
 .pricing-header { margin-bottom:48px; }
 .pricing-header h2 { font-size:clamp(30px,4.5vw,52px); font-weight:900; letter-spacing:-2px; }
+.pricing-notice { background:#fff; border:1px solid var(--border); border-left:4px solid var(--red); border-radius:4px; padding:24px 28px; margin-bottom:40px; }
+.pricing-notice p { font-size:15px; color:var(--gray); line-height:1.8; margin-bottom:10px; }
+.pricing-notice p:last-child { margin-bottom:0; }
+.pricing-notice strong { color:var(--black); }
+.slots { display:flex; flex-direction:column; gap:10px; margin-top:14px; }
+.slot { display:flex; align-items:center; gap:12px; font-size:14px; font-weight:700; }
+.slot-dot { width:12px; height:12px; border-radius:50%; flex-shrink:0; }
+.slot-dot.taken { background:var(--red); }
+.slot-dot.free { background:#ccc; border:2px solid #aaa; }
+.slot a { color:var(--red); text-decoration:none; }
+.slot a:hover { text-decoration:underline; }
 .pricing-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--border); border:1px solid var(--border); }
 .plan { background:#fff; padding:44px 36px; }
 .plan.featured { background:#fff8f8; }
@@ -148,6 +159,7 @@ section { padding:96px 5%; }
 .plan-list li.muted::before { content:'–'; color:#ccc; }
 .plan-btn { display:block; text-align:center; padding:13px; border:2px solid var(--black); color:var(--black); font-size:12px; font-weight:800; letter-spacing:1px; text-transform:uppercase; text-decoration:none; border-radius:4px; transition:all .2s; }
 .plan.featured .plan-btn, .plan-btn:hover { background:var(--red); border-color:var(--red); color:#fff; }
+.coming-soon-price { font-size:26px; font-weight:900; color:var(--gray); letter-spacing:1px; text-transform:uppercase; margin-bottom:6px; }
 
 /* CONTACT */
 #contact { background:#fff; }
@@ -159,13 +171,11 @@ section { padding:96px 5%; }
 .ci-icon { width:44px; height:44px; border:1px solid var(--border); border-radius:4px; display:flex; align-items:center; justify-content:center; font-size:18px; flex-shrink:0; background:var(--light); }
 .ci-text strong { display:block; font-size:14px; margin-bottom:2px; }
 .ci-text span { font-size:13px; color:var(--gray); }
-.contact-form { display:flex; flex-direction:column; gap:16px; background:var(--light); padding:36px; border-radius:8px; border:1px solid var(--border); }
-.cf-row label { display:block; font-size:11px; font-weight:800; letter-spacing:2px; text-transform:uppercase; color:var(--gray); margin-bottom:6px; }
-.cf-row input, .cf-row textarea, .cf-row select { width:100%; background:#fff; border:1.5px solid var(--border); color:var(--black); padding:11px 13px; font-size:14px; font-family:inherit; border-radius:4px; outline:none; transition:border-color .2s; }
-.cf-row input:focus, .cf-row textarea:focus { border-color:var(--red); }
-.cf-row textarea { min-height:100px; resize:vertical; }
-.cf-submit { background:var(--red); color:#fff; border:none; padding:15px; font-size:13px; font-weight:800; letter-spacing:2px; text-transform:uppercase; border-radius:4px; cursor:pointer; transition:background .2s; }
-.cf-submit:hover { background:#c0000b; }
+.instagram-box { background:var(--light); padding:48px 36px; border-radius:8px; border:1px solid var(--border); display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; gap:20px; }
+.instagram-box .ig-icon { font-size:52px; }
+.instagram-box p { font-size:15px; color:var(--gray); line-height:1.7; }
+.ig-link { display:inline-flex; align-items:center; gap:10px; background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888); color:#fff; padding:14px 28px; border-radius:4px; font-size:14px; font-weight:800; letter-spacing:1px; text-transform:uppercase; text-decoration:none; transition:opacity .2s; }
+.ig-link:hover { opacity:.85; }
 
 /* FOOTER */
 footer { background:var(--black); padding:30px 5%; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px; }
@@ -206,7 +216,7 @@ footer p { font-size:12px; color:rgba(255,255,255,.25); }
     <li><a href="#pricing">Preise</a></li>
     <li><a href="#contact">Kontakt</a></li>
   </ul>
-  <a class="nav-cta" href="#contact">Demo anfragen</a>
+  <a class="nav-cta" href="https://www.instagram.com/sportphoto.live" target="_blank" rel="noopener">Kontakt via Instagram</a>
 </nav>
 
 <section class="hero" id="home">
@@ -282,7 +292,7 @@ footer p { font-size:12px; color:rgba(255,255,255,.25); }
     </h1>
     <p class="hero-sub">Echtzeit-Fotoplattform für Sportvereine und Events. Content bleibt bei euch.</p>
     <div class="hero-btns">
-      <a class="btn-red" href="#contact">Kostenlos testen</a>
+      <a class="btn-red" href="https://www.instagram.com/sportphoto.live" target="_blank" rel="noopener">Jetzt anmelden</a>
       <a class="btn-outline" href="#features">Mehr erfahren</a>
     </div>
   </div>
@@ -385,10 +395,19 @@ footer p { font-size:12px; color:rgba(255,255,255,.25); }
 <section id="pricing">
   <div class="section-inner">
     <div class="pricing-header"><div class="section-label">Preise</div><h2>Einfach. Transparent. Fair.</h2></div>
+    <div class="pricing-notice">
+      <p><strong>🚀 Wir befinden uns derzeit in einer dreimonatigen Testphase.</strong></p>
+      <p>In dieser Phase stehen <strong>drei exklusive Slots</strong> für Vereine und/oder Events zur Verfügung – melde dich, wenn du dabei sein möchtest!</p>
+      <div class="slots">
+        <div class="slot"><span class="slot-dot taken"></span> Slot 1 – <a href="https://www.styrianbears.at" target="_blank" rel="noopener">Styrian Bears</a> &nbsp;✅ besetzt</div>
+        <div class="slot"><span class="slot-dot free"></span> Slot 2 – frei</div>
+        <div class="slot"><span class="slot-dot free"></span> Slot 3 – frei</div>
+      </div>
+    </div>
     <div class="pricing-grid">
-      <div class="plan"><div class="plan-tag ghost">Starter</div><div class="plan-name">Starter</div><div class="plan-price">€49<sub>/mo</sub></div><p class="plan-desc">Für kleine Vereine und erste Events.</p><div class="plan-line"></div><ul class="plan-list"><li>bis 50 Nutzer</li><li>50 GB Speicher</li><li>1 aktives Event</li><li>Basis-Archiv</li><li>Social-Media-Export</li><li class="muted">Personalisierung</li><li class="muted">Sponsoren-Hub</li></ul><a class="plan-btn" href="#contact">Jetzt starten</a></div>
-      <div class="plan featured"><div class="plan-tag">⭐ Beliebteste Wahl</div><div class="plan-name">Club</div><div class="plan-price">€149<sub>/mo</sub></div><p class="plan-desc">Für aktive Vereine mit regelmäßigen Events.</p><div class="plan-line"></div><ul class="plan-list"><li>bis 200 Nutzer</li><li>250 GB Speicher</li><li>Unbegrenzte Events</li><li>Vollständiges Archiv</li><li>Social-Media-Export</li><li>Personalisierung</li><li>Sponsoren-Hub</li></ul><a class="plan-btn" href="#contact">Jetzt starten</a></div>
-      <div class="plan"><div class="plan-tag ghost">Enterprise</div><div class="plan-name">Pro / Verband</div><div class="plan-price" style="font-size:32px;padding-top:8px">Auf Anfrage</div><p class="plan-desc">Für Verbände, Ligen und große Events.</p><div class="plan-line"></div><ul class="plan-list"><li>Unbegrenzte Nutzer</li><li>Individueller Speicher</li><li>White-Label Option</li><li>API-Zugang</li><li>Dedicated Support</li><li>SLA & Datenschutz</li><li>Pay-per-Event möglich</li></ul><a class="plan-btn" href="#contact">Kontakt aufnehmen</a></div>
+      <div class="plan"><div class="plan-tag ghost">Starter</div><div class="plan-name">Starter</div><div class="coming-soon-price">Coming soon</div><p class="plan-desc">Für kleine Vereine und erste Events.</p><div class="plan-line"></div><ul class="plan-list"><li>bis 50 Nutzer</li><li>50 GB Speicher</li><li>1 aktives Event</li><li>Basis-Archiv</li><li>Social-Media-Export</li><li class="muted">Personalisierung</li><li class="muted">Sponsoren-Hub</li></ul><a class="plan-btn" href="https://www.instagram.com/sportphoto.live" target="_blank" rel="noopener">Kontakt via Instagram</a></div>
+      <div class="plan featured"><div class="plan-tag">⭐ Beliebteste Wahl</div><div class="plan-name">Club</div><div class="coming-soon-price">Coming soon</div><p class="plan-desc">Für aktive Vereine mit regelmäßigen Events.</p><div class="plan-line"></div><ul class="plan-list"><li>bis 200 Nutzer</li><li>250 GB Speicher</li><li>Unbegrenzte Events</li><li>Vollständiges Archiv</li><li>Social-Media-Export</li><li>Personalisierung</li><li>Sponsoren-Hub</li></ul><a class="plan-btn" href="https://www.instagram.com/sportphoto.live" target="_blank" rel="noopener">Kontakt via Instagram</a></div>
+      <div class="plan"><div class="plan-tag ghost">Enterprise</div><div class="plan-name">Pro / Verband</div><div class="coming-soon-price">Coming soon</div><p class="plan-desc">Für Verbände, Ligen und große Events.</p><div class="plan-line"></div><ul class="plan-list"><li>Unbegrenzte Nutzer</li><li>Individueller Speicher</li><li>White-Label Option</li><li>API-Zugang</li><li>Dedicated Support</li><li>SLA & Datenschutz</li><li>Pay-per-Event möglich</li></ul><a class="plan-btn" href="https://www.instagram.com/sportphoto.live" target="_blank" rel="noopener">Kontakt via Instagram</a></div>
     </div>
   </div>
 </section>
@@ -399,19 +418,19 @@ footer p { font-size:12px; color:rgba(255,255,255,.25); }
       <div class="contact-left">
         <div class="section-label">Kontakt</div>
         <h2>Bereit für den ersten Schritt?</h2>
-        <p>Schreib uns – wir melden uns innerhalb von 24 Stunden und zeigen dir sportphoto.live live in Aktion.</p>
+        <p>Schreib uns auf Instagram – wir freuen uns auf deine Nachricht und melden uns so schnell wie möglich!</p>
         <div class="contact-items">
-          <div class="ci"><div class="ci-icon">✉️</div><div class="ci-text"><strong>hello@sportphoto.live</strong><span>Für allgemeine Anfragen</span></div></div>
           <div class="ci"><div class="ci-icon">🌐</div><div class="ci-text"><strong>sportphoto.live</strong><span>Fast sports. Faster delivery.</span></div></div>
           <div class="ci"><div class="ci-icon">📍</div><div class="ci-text"><strong>Graz, Österreich</strong><span>Wir kennen den Markt.</span></div></div>
         </div>
       </div>
-      <div class="contact-form">
-        <div class="cf-row"><label>Name</label><input type="text" placeholder="Max Mustermann"></div>
-        <div class="cf-row"><label>E-Mail</label><input type="email" placeholder="max@meinverein.at"></div>
-        <div class="cf-row"><label>Ich bin …</label><select><option>Vereinsverantwortlicher</option><option>Eventveranstalter</option><option>Pressefotograf</option><option>Verband / Liga</option><option>Investor</option><option>Sonstiges</option></select></div>
-        <div class="cf-row"><label>Nachricht</label><textarea placeholder="Erzähl uns von deinem Verein oder Event …"></textarea></div>
-        <button class="cf-submit">Nachricht senden →</button>
+      <div class="instagram-box">
+        <div class="ig-icon">📸</div>
+        <p>Folge uns auf Instagram und schreib uns direkt eine Nachricht – wir sind für dich da!</p>
+        <a class="ig-link" href="https://www.instagram.com/sportphoto.live" target="_blank" rel="noopener">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.334 3.608 1.308.975.975 1.246 2.242 1.308 3.608.058 1.266.069 1.646.069 4.851s-.012 3.584-.07 4.85c-.062 1.366-.334 2.633-1.308 3.608-.975.975-2.242 1.246-3.608 1.308-1.266.058-1.646.069-4.85.069s-3.584-.012-4.85-.07c-1.366-.062-2.633-.334-3.608-1.308-.975-.975-1.246-2.242-1.308-3.608C2.175 15.584 2.163 15.204 2.163 12s.012-3.584.07-4.85c.062-1.366.334-2.633 1.308-3.608C4.516 2.497 5.783 2.225 7.149 2.163 8.416 2.105 8.796 2.163 12 2.163zm0-2.163C8.741 0 8.332.014 7.052.072 5.197.157 3.355.745 2.014 2.086.673 3.427.157 5.197.072 7.052.014 8.332 0 8.741 0 12s.014 3.668.072 4.948c.085 1.855.601 3.697 1.942 5.038 1.341 1.341 3.183 1.857 5.038 1.942C8.332 23.986 8.741 24 12 24s3.668-.014 4.948-.072c1.855-.085 3.697-.601 5.038-1.942 1.341-1.341 1.857-3.183 1.942-5.038C23.986 15.668 24 15.259 24 12s-.014-3.668-.072-4.948c-.085-1.855-.601-3.697-1.942-5.038C20.645.673 18.803.157 16.948.072 15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324A6.162 6.162 0 0 0 12 5.838zm0 10.162a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+          @sportphoto.live
+        </a>
       </div>
     </div>
   </div>
